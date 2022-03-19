@@ -1,0 +1,6 @@
+# The GitHub-Key
+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
+
+git clone https://github.com/Hzffzh66/my-ubuntu.git
+
+

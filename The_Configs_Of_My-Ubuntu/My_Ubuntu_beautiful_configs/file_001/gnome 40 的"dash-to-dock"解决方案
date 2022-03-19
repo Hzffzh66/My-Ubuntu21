@@ -1,0 +1,78 @@
+我们知道，gnome出了新的版本，扩展死一片。。这其中也包括"dash-to-dock"这个扩展。
+
+那么我们要怎么解决这个问题呢？总不能忍受吧。
+
+我们其实要是勤奋点，可以在这个扩展的github中找到一个Pull Request #1402.
+
+所以我们满心欢喜的去执行：
+
+git clone -b ewlsh/gnome-40 https://github.com/ewlsh/dash-to-dock.git
+cd dash-to-dock
+make
+make install
+但是在make的时候糊一脸，make输出：
+
+sassc --omit-map-comment _stylesheet.scss stylesheet.css
+make: sassc: 没有那个文件或目录
+make: *** [Makefile:66：stylesheet.css] 错误 127
+这个问题很容易解决，看起来就是缺少"stylesheet.css"这个文件，我们克隆下主线
+
+git clone https://github.com/ewlsh/dash-to-dock.git
+将其中的"stylesheet.css"复制到最先clone的里面，再make就完美解决。
+
+目前使用一切正常。
+
+指令汇总：
+
+git clone -b ewlsh/gnome-40 https://github.com/ewlsh/dash-to-dock.git
+git clone https://github.com/ewlsh/dash-to-dock.git ./dash-to-dock-master
+cp ./dash-to-dock-master/stylesheet.css ./dash-to-dock/
+rm -r ./dash-to-dock-master
+cd dash-to-dock
+make
+make install
+reboot
+
+
+
+
+
+===============================
+第一步下载压缩包解压。
+Dash to Dock
+
+第二步重命名文件夹为dash-to-dock@micxgx.gmail.com，然后把文件复制到home文件下的.local/share/gnome-shell/extensions/。注：.local是隐藏文件，按Ctrl+H查看隐藏文件可以找到。
+
+最好是使用终端，把dash-to-dock@micxgx.gmail.com复制到home文件夹下，然后移动到.local/share/gnome-shell/extensions/下：
+
+sudo mv dash-to-dock@micxgx.gmail.com/ .local/share/gnome-shell/extensions/
+
+第三步重启gnome，按Alt+F2，然后输入r，就可以重启。
+
+第四步打开gnome-tweak设置Dash to Dock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+
+
+# WhiteSur-gtk-theme    https://github.com/vinceliuice/WhiteSur-gtk-theme
+https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+
+# WhiteSur    https://github.com/vinceliuice/WhiteSur-kde
+
+WhiteSur icon theme  https://github.com/vinceliuice/WhiteSur-icon-theme
+
+https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/dash-to-dock
+
+================================================
+Colloid gtk theme
+GTK3/4 Themes
+
+Source i https://github.com/vinceliuice/Colloid-gtk-theme
+
+=================================================
+McMojave
+GTK3/4 Themes
+
+Source i
+https://github.com/vinceliuice/Mojave-gtk-theme
+
+https://github.com/vinceliuice/Mojave-gtk-theme.git
+
+Description:
+macOS Mojave like theme which supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, Cinamon, XFCE, Mate, etc.
+---------------------------------
+Included themes
+---------------------------------
+1: Gtk2 theme
+2: Gtk3 theme
+3: Gnome-shell theme
+4: Metacity theme
+5: Xfwm4 theme
+6: Cinnamon theme
+7: Plank theme
+---------------------------------
+Icon theme: "McMojave-circle"
+McMojave-circle icon theme: https://www.opendesktop.org/p/1305429/
+---------------------------------
+Download tips
+---------------------------------
+Mojave-light: light version
+Mojave-light-solid: light version without transparence
+Mojave-dark: dark version
+Mojave-dark-solid: dark version without transparence
+---------------------------------
+Firefox Theme
+---------------------------------
+https://github.com/vinceliuice/Mojave-gtk-theme/tree/master/src/other/firefox
+---------------------------------
+INFO
+---------------------------------
+GTK2 ENGINES REQUIREMENT
+- GTK2 engine Murrine
+-GTK2 engine Pixbuf
+
+Fedora/RedHat distros:
+yum install gtk-murrine-engine gtk2-engines
+
+Ubuntu/Mint/Debian distros:
+sudo apt-get install gtk2-engines-murrine gtk2-engines-pixbuf
+
+ArchLinux:
+pacman -S gtk-engine-murrine gtk-engines
+
+=================================================
+
+mcOS 11 GTK and Shell theme
+GTK3/4 Themes bigsurmacosmacos11macosxosx
+
+Source i https://github.com/USBA/macOS11-theme
+
+====================================================
+
+macOS Big Sur
+Cursors bigsurlinuxmacoswindows
+
+Source i
+https://github.com/ful1e5/apple_cursor
+
+Linux Install
+Get the latest stable Linux release from the files section. Unpack the .tar.gz file and follow these commands.
+
+mv macOSBigSur ~/.icons                     # install as local
+sudo mv macOSBigSur /usr/share/icons        # install as root
+
+
+Linux Uninstall
+
+rm -r ~/.icons/macOSBigSur                  # remove from local
+sudo rm -r /usr/share/icons/macOSBigSur     # remove from root
+
+=====================================================
+
+Big Sur Status Area
+Gnome Extensions big bigsur gnome macos popos
+
+Source i
+https://github.com/Fausto-Korpsvart/bigSur-StatusArea-korpsvart
+
+=========================================================
+Big Sur Menu for Gnome Desktop
+Gnome Extensions apple bigsur gnome macos menu
+
+Source i
+https://github.com/Fausto-Korpsvart/BigSurMenu-korpsvart
+
+==========================================================
+
+
+mcOS Monterey for Latte Dock
+Latte Layouts dockkdelattemacosmonterey
+
+Source i
+Add the source-code for this project on opencode.net
+https://www.gnome-look.org/p/1541181
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

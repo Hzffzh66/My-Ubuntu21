@@ -1,0 +1,20 @@
+=======================Dash to dock===================
+# Download
+https://micheleg.github.io/dash-to-dock/releases.html
+
+第一步下载压缩包解压。
+Dash to Dock
+
+第二步重命名文件夹为
+dash-to-dock@micxgx.gmail.com
+然后把文件复制到home文件下的
+.local/share/gnome-shell/extensions/。注：.local是隐藏文件，按Ctrl+H查看隐藏文件可以找到。
+
+最好是使用终端，把dash-to-dock@micxgx.gmail.com复制到home文件夹下，然后移动到
+.local/share/gnome-shell/extensions/下：
+
+sudo mv dash-to-dock@micxgx.gmail.com/ .local/share/gnome-shell/extensions/
+
+第三步重启gnome，按Alt+F2，然后输入r，就可以重启。
+
+第四步打开gnome-tweak设置Dash to Dock

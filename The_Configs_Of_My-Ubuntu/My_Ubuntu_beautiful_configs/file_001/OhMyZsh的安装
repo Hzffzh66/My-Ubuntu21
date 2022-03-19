@@ -1,0 +1,48 @@
+=================OhMyZsh的安装======================
+第一步：
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+第二步：
+cp ~/.zshrc ~/.zshrc.orig
+第三步：
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+第四步：
+chsh -s $(which zsh)
+
+
+
+====================== The Themes of oh-my-zsh=====================
+
+					https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
+robbyrussell        # The default that Robby Russell uses.
+
+
+
+# 个人比较喜欢的主题#
+
+		tjkiragnoster
+		alanpeabody
+		amuse
+		apple
+		bira
+		crunch
+		darkblood
+		duellj
+		fino-time
+		funky
+		gnzh
+		intheloop
+		jonathan
+		kardan
+		kphoen
+		rkj-repos
+		linuxonly
+		refined
+		rixius
+		steeef
+		strugch
+		wedisagree
+		xiong-chiamiov
+		xiong-chiamiov-plus
+
+

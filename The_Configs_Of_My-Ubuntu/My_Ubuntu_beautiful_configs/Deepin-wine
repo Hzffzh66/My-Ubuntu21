@@ -1,0 +1,247 @@
+==========================Deepin-wine=========================
+Deepin-wine官网：https://wiki.deepin.org/wiki/Deepin-wine
+https://www.winehq.org/
+
+git clone https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git
+
+
+1.安装默认Wine版本
+
+		步骤如下：
+
+		# 查看最新版本
+		apt-cache policy wine
+
+		# 如果想使用 Wine 5.0, 直接安装即可
+		sudo apt-get install wine
+2.安装 Wine 6.0
+
+		步骤如下：
+
+		# 如果您使用的是 64 位系统，请开启 32 bit 架构支持（如果您之前没有开启的话）：
+		sudo dpkg --add-architecture i386 
+
+		# 下载添加仓库密钥：
+		wget -nc https://dl.winehq.org/wine-builds/winehq.key
+		sudo apt-key add winehq.key
+
+		# 并添加仓库： 
+		sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+
+		# 更新安装包： 
+		sudo apt-get update
+
+		# 安装稳定分支：
+		sudo apt-get install --install-recommends winehq-stable
+
+		# 验证安装情况：
+		wine --version
+
+# 使用Wine运行Windows程序
+	1.环境配置
+
+		步骤如下：
+
+		# 配置wine环境
+		WINEARCH=win32 WINEPREFIX=/.../"wine-workspace" winecfg
+
+		# 添加DLL包
+		WINEARCH=win32 WINEPREFIX=/.../"wine-workspace" winetricks
+
+
+	2.运行Windows程序
+
+		步骤如下：
+
+		# 运行EXE
+		WINEARCH=win32 WINEPREFIX=/.../"wine-workspace" wine ./"Application.exe"
+
+
+
+
+=======================ubuntu安装wine_Ubuntu 20.04 安装微信、QQ等=============================
+1.安装前准备
+
+安装必要的工具及deepin-wine依赖
+
+sudo apt install wget g++ git     #如已安装可自行跳过
+
+2.安装deepin-wine
+
+    git clone "https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git"
+    cd deepin-wine                    #切换到下载目录
+    sudo ./install.sh                 #执行安装
+
+deepin-wine容器安装完成，下面进行具体软件的安装。
+
+
+3.安装Deep-wine微信及QQ
+
+微信
+
+    sudo wget "https://mirrors.huaweicloud.com/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.2.31deepin0_i386.deb" 
+    sudo dpkg -i *wechat*deb              #安装微信
+    sudo apt install libjpeg62:i386       #解决微信无法查看发送图片问题
+
+QQ
+
+    sudo wget https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_9.1.8deepin0_i386.deb
+    sudo dpkg -i *qq.im*deb
+
+TIM
+
+    sudo wget https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin4_i386.deb
+    sudo dpkg -i *qq.office*deb
+
+
+
+
+如有其它软件需求可使用deepin发布的最新版容器安装包：
+
+    QQ轻聊版
+    Foxmail
+    百度网盘
+    WinRAR
+    迅雷极速版
+
+其它deepin-wine容器：阿里云镜像下载
+4.托盘悬浮
+
+正常安装后wine窗口为独立窗口，为了便于美观建议安装如下插件：
+
+Gnome Shell 插件：TopIcons Plus
+
+5.软件需求其他辅助软件的安装方法
+
+    下载需要的软件安装包，exe文件，如：flash
+    将下载的安装文件放入 ~/.deepinwine/<容器名（微信的为Deepin-WeChat，TIM为：Deepin-TIM）>/drive_c 下，即软件所在 Wine C 盘根目录
+    打开一个 Terminal ，执行：
+
+WINEPREFIX=~/.deepinwine/<容器名> deepin-wine "c:<文件名>"
+
+然后按提示进行安装、重启软件即可。
+6.手动更改配置（winecfg）
+
+执行以下代码，并根据需求进行配置更改。
+
+WINEPREFIX=~/.deepinwine/容器名称 deepin-wine winecfg 
+
+7.卸载方法
+
+uninstall.sh
+
+
+
+8.系统非中文语言环境时软件设置为中文
+
+修改/opt/deepinwine/tools/run.sh 文件，将 WINE_CMD 那一行修改为 WINE_CMD="LC_ALL=zh_CN.UTF-8 deepin-wine"
+
+sudo vim /opt/deepinwine/tools/run.sh       #打开文件进行修改
+
+9.软件更新
+
+    wget -qO- https://deepin-wine.i-m.dev/setup.sh | sudo sh
+    sudo apt-get install deepin.com.qq.office      #安装/更新TIM
+    sudo apt-get install deepin.com.qq.im          #安装/更新QQ
+    sudo apt-get install deepin.com.wechat         #安装/更新微信
+
+10.wine全部进入后台后无法调用问题
+
+原文链接：wine 应用程序全局快捷键无效的解决方案
+
+原文作者：Seven
+1. 安装 xdotool
+
+sudo apt install --no-install-recommends xdotool
+
+
+2. 编写 xdotool 脚本
+
+*思路: Wine 应用在后台无法接收到快捷键状态, 此时借助 xdotool 向 Wine 应用发送模拟按键信息即可. *
+
+在合适的位置新建一个脚本文件 "open_wechat.sh", 写入以下内容:
+
+    #!/bin/sh 
+    #在当前运行的应用中找到名为WeChat.exe的应用程序，并向它发送按键事件"ctrl+alt+W" 
+    #WeChat的可执行文件名为WeChat.exe，如果是其它应用程序就修改成其它应用程序的可执行文件名, 应用名称大小写敏感, 一个字母都不能错! 
+    xdotool key --window $(xdotool search --limit 1 --all --pid $(pgrep WeChat.exe)) "ctrl+alt+W"
+
+赋予脚本可执行权限:
+
+chmod +x open_wechat.sh
+
+
+
+
+==========================================================================================
+1.在终端中使用如下命令，添加软件仓库并自动刷新缓存：
+
+wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+
+2.应用安装
+
+软件仓库添加完毕，会提示使用 apt 命令即可安装微信、QQ 了，与安装 Linux 原生软件一样，安装其他软件只需使用相应的软件名称即可。比如安装微信只需要运行下面的命令：
+
+sudo apt-get install deepin.com.wechat
+
+将deepin.com.wechat替换为下列包名，可以继续安装其他应用：
+应用	                          包名
+TIM	                  deepin.com.qq.office
+QQ	                  deepin.com.qq.im
+QQ轻聊版	              deepin.com.qq.im.light
+微信	                  deepin.com.wechat
+百度网盘			      deepin.com.baidu.pan
+WinRAR			      deepin.cn.com.winrar
+
+
+=================================================================
+############################################################
+
+快速开始
+添加仓库
+首次使用时，你需要运行如下一条命令将移植仓库添加到系统中。
+	wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+
+应用安装
+	自此以后，你可以像对待普通的软件包一样，使用apt-get系列命令进行各种应用安装、更新和卸载清理了。
+	比如安装微信只需要运行下面的命令，
+	sudo apt-get install com.qq.weixin.deepin
+	将com.qq.weixin.deepin替换为下列包名，可以继续安装其他应用：
+
+
+              应用                                      包名
+    
+              微信								com.qq.weixin.deepin
+			   QQ                               com.qq.im.deepin
+			  TIM                			    com.qq.office.deepin
+			  钉钉                               com.dingtalk.deepin
+             阿里旺旺   				            com.taobao.wangwang.deepin
+              QQ音乐                             com.qq.music.deepin
+             QQ视频                              com.qq.video.deepin
+             爱奇艺                               com.iqiyi.deepin
+
+                   完整列表参见https://deepin-wine.i-m.dev。
+
+
+
+
+
+大功告成，现在可以试试安装更新deepin-wine软件了，如：
+微信：
+	sudo apt-get install com.qq.weixin.deepin
+QQ：
+	sudo apt-get install com.qq.im.deepin
+TIM：
+	sudo apt-get install com.qq.office.deepin
+钉钉：
+	sudo apt-get install com.dingtalk.deepin
+                         完整列表见 https://deepin-wine.i-m.dev/
+
+🌟 尽量将main restricted universe multiverse这几个系统源都启用（自行百度），免得依赖问题多。
+🌟 安装后需要注销重登录才能显示应用图标。
+🌟 出了问题？先去github主页看README，再看别人提过的issue，再百度搜搜，避免直接就提issue。
+
+如果觉得有用，不妨来给项目加个star：https://github.com/zq1997/deepin-wine
+=======================================================================================================
+
+

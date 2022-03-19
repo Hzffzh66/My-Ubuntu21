@@ -1,0 +1,70 @@
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
+
+# zsh-syntax-highlighting高亮显示正确的命令
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+plugins=(git fasd zsh-autosuggestions  zsh-syntax-highlighting)
+
+
+
+
+在~/.zshrc中启用
+plugins=(git zsh-autosuggestions)
+
+
+重新生效
+sourch ~/.zshrc
+
+
+
+
+# 主题都存放在这个目录下
+ls ~/.oh-my-zsh/themes/
+
+# 在.zshrc中, 选择喜欢的主题就行.
+ZSH_THEME="robbyrussell"
+
+# 重新生效, 就能看到效果了
+source ~/.zshrc
+
+==============================================
+
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+vim ~/.zshrc
+source ~/.zshrc
+sudo apt install zsh
+chsh -s /bin/zsh
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions
+vim ~/.zshrc
+source ~/.zshrc
+
+
+==========================================================
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+ 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

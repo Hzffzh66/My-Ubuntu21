@@ -1,0 +1,133 @@
+=========================Ubuntu21.10个人美化配置教程==========================
+一、进入新系统之后先进行系统软件源的选择，进行系统的相关更新
+二、安装谷歌拼音输入法
+	1.先安装输入法框架
+		sudo apt install fcitx
+	2.安装谷歌输入法
+		sudo apt-get install fcitx-googlepinyin
+	3.进入系统的语言支持，把中文应用到全局，reboot
+
+
+三、安装美化扩展插件
+	在Terminal中进行操作：
+		sudo apt install gnome-shell-extensions gnome-tweaks chrome-gnome-shell
+	进入gnome 插件官网：
+		www.extensions.gnome.org/
+	安装相关的插件：
+		    user themes
+		    dash to dock
+		    netspeed
+		    Frippery Move Clock
+		    Dynamic Panel Transparency
+		    Compiz windows effect
+		    Panel OSD
+		    OpenWeather
+
+
+
+	下载mac美化包
+
+		所有的美化包都可以从https://www.gnome-look.org/browse/ 这个网站下载的，但是这个网站很慢。
+
+		    主题包：WhiteSur Gtk Theme
+
+		    https://www.gnome-look.org/p/1403328/
+
+		    Icons 图标：WhiteSur icon theme
+
+		    https://www.pling.com/p/1405756/
+
+		    鼠标图标：McMojave cursors
+
+		    https://www.pling.com/p/1355701/
+
+		    壁纸：WhiteSur Wallpaper
+
+		    https://www.pling.com/p/1398833/
+
+	把下载好之后的相关主题包放到～/.themes文件夹下。
+
+
+四、安装谷歌浏览器
+
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+	32位安装命令：
+		sudo dpkg -i google-chrome-stable_current_i386.deb
+
+	64位安装命令:
+		sudo dpkg -i google-chrome-stable_current_amd64.deb 
+
+
+
+==============================================================================================================
+
+五、=================OhMyZsh的安装======================
+第一步：
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+第二步：
+cp ~/.zshrc ~/.zshrc.orig
+第三步：
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+第四步：
+chsh -s $(which zsh)
+
+
+
+====================== The Themes of oh-my-zsh=====================
+
+					https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
+robbyrussell        # The default that Robby Russell uses.
+
+
+
+# 个人比较喜欢的主题#
+
+		tjkiragnoster
+		alanpeabody
+		amuse
+		apple
+		bira
+		crunch
+		darkblood
+		duellj
+		fino-time
+		funky
+		gnzh
+		intheloop
+		jonathan
+		kardan
+		kphoen
+		rkj-repos
+		linuxonly
+		refined
+		rixius
+		steeef
+		strugch
+		wedisagree
+		xiong-chiamiov
+		xiong-chiamiov-plus
+
+
+=====================================Vim的安装===============================================
+
+=========================================Vim configs====================================================
+# vim bundle github
+
+git clone https://github.com/VundleVim/Vundle.vim.git
+
+https://github.com/chinaaaw3c/At-config/blob/master/.vimrc
+
+
+六、
+====================================下载新立得软件包管理器============================================
+								sudo apt install synaptic -y
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+=========================================Vim configs====================================================
+# vim bundle github
+
+git clone https://github.com/VundleVim/Vundle.vim.git
+
+
+https://github.com/chinaaaw3c/At-config/blob/master/.vimrc
+
+

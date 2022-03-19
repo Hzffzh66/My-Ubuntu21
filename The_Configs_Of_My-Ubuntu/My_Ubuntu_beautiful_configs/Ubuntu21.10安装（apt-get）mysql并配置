@@ -1,0 +1,391 @@
+=======================================ubuntu21.10安装=================
+#一、安装mysql
+	1.1 更新源
+		sudo apt-get update
+
+	1.2 安装mysql服务
+		sudo apt-get install mysql-server
+
+		设置root密码
+
+			sudo mysql -uroot
+			use mysql;
+			alter user 'root'@'localhost' identified with mysql_native_password by '123456';
+
+		设置root远程访问
+			3.1 修改数据库
+				sudo mysql -u root -p
+				use mysql;
+				update user set host="%" where user="root";
+				flush privileges;
+				exit 
+			
+			3.2 修改配置文件
+				vim /etc/mysql/mysql.conf.d/mysqld.cnf
+				修改bind-address，并保存（Esc > :wq）
+					bind-address = *
+
+			3.3 重启服务
+				service mysql restart
+
+
+
+==========================Ubuntu20.04 安装、美化、办公环境搭建及深度学习开发环境搭建=============================
+
+# 办公环境搭建
+	语言
+
+		ubuntu20.04中因为缺少某些包的原因，不能再安装搜狗输入法了。
+		我尝试使用谷歌输入法，虽然没有windows系统下的界面舒服，但是是目前我本人用过比较满意的。
+
+		具体的执行方式参考：ubuntu 20.04中文输入法安装。
+		简述为三步：
+
+		    sudo apt-get install fcitx-googlepinyin
+		    language support 中的键盘输入法系统Keyboard input method system将默认的iBus，更改为fcitx。
+		    应用程序fcitx配置中通过加号+添加新的输入法Google Pinyin。
+
+	    常用的软件安装
+	    	sudo apt-get install fcitx-googlepinyin # 谷歌拼音输入法
+			sudo apt-get install git # git
+			sudo apt-get install stacer # 系统管理器
+			sudo apt-get install virtualbox # 虚拟机
+			sudo apt-get install okular # pdf阅读器
+			sudo apt-get install flameshot # 截图工具
+			sudo apt-get install pandoc # markdown转word
+			sudo apt-get install texmaker # latex编辑器
+			sudo apt-get install redshift # 屏幕色温调节
+			sudo apt-get install pdfgrep # pdf文件正则表达式检索
+			sudo apt-get install recoll poppler-utils # 文件内容检索工具
+			sudo apt-get install rdfind # 重复文件扫描
+			sudo snap install mathpix-snipping-tool # 图片转latex
+
+  Sublime && Typora
+
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	sudo apt-get install apt-transport-https
+	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+	sudo apt-get update
+	sudo apt-get install sublime-text
+
+	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+	sudo add-apt-repository 'deb https://typora.io/linux ./'
+	sudo apt-get update 
+	sudo apt-get install typora
+
+
+
+=======================Ubuntu 美化 macOS Big Sur=========================
+
+# 下载相关
+		sudo apt install gnome-tweaks  chrome-gnome-shell gnome-shell-extensions
+
+
+
+
+
+# 下载相关文件
+		WhiteSur 主题：
+			https://www.pling.com/p/1403328/
+			WhiteSur-light & WhiteSur-dark
+			BigSur 图标：
+			https://www.pling.com/p/1399044/
+			BigSur
+			Mojave 光标：
+			https://www.pling.com/p/1355701/
+			McMojave-cursors
+			Dock 主题：
+			https://www.pling.com/p/1401527/
+			壁纸：
+			https://www.pling.com/p/1399346/
+
+# 安装依赖
+
+		curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+		sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+		sudo apt-get update
+		sudo apt install gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell cairo-dock albert libglib2.0-dev
+
+				启用 chrome-gnome-shell
+
+				打开
+
+				https://extensions.gnome.org/
+
+				点击
+
+				Click here to install browser extension
+
+
+				## 安装
+
+				User Themes
+				Frippery Move Clock
+				Dynamic Panel Transparency
+				Compiz windows effect
+				Panel OSD
+
+
+
+
+				添加主题等文件
+
+				运行
+
+				cd ~/
+				mkdir .themes
+				cp -r <path-to-"WhiteSur-light"-folder> .themes
+				cp -r <path-to-"WhiteSur-dark"-folder> .themes
+				mkdir .icons
+				cp -r <path-to-"BigSur"-folder>/* .icons
+				cp -r <path-to-"McMojave-cursors"-folder> .icons
+
+
+	# 修改设置
+		打开
+
+		tweak
+
+		修改为
+
+		窗口->居中显示新窗口->Yes
+		窗口标题栏->放置->左
+		外观->应用程序->WhiteSur-dark
+		外观->光标->McMojave-cursors
+		外观->图标->BigSur-dark
+		外观->Shell->WhiteSur-dark
+		开机启动程序->添加->Cairo-Dock
+
+	打开extensions
+	修改为
+
+		Panel OSD->水平位置百分比->96%
+		Panel OSD->垂直位置百分比->98%
+		Ubuntu Dock->No
+		Dynamic Panel Transparency->背景->启用自定义不透明度->Yes
+		Dynamic Panel Transparency->背景->启用自定义不透明度->非最大化的不透明度->50%
+
+	运行Cairo-Dock
+		右键 Dock 添加自定义启动器
+		右键 Dock 打开配置，修改为
+
+		主题->导入-><path-to-"mcOS-BS-Dark.tar.gz"-file>
+		Current items->移除 Applications Menu
+		Current items->新的起动器->Launcher's name->Launchpad
+		Current items->Launchpad->拖拽到最上方
+		Current items->Launchpad->Image's name or path->Launchpad.svg
+		Current items->Launchpad->Command to launch on click->
+		dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell
+		org.gnome.Shell.Eval string:'Main.shellDBusService.ShowApplications();'
+		Configuration->图标的动画和特效->置空
+
+	运行albert
+
+	修改为
+
+		General->Hotkey->Ctrl+Shift+F
+		General->Autostart on login->Yes
+		General->Theme->Arc Dark Blue
+		General->Amount of results->10
+		Extensions->Applications->Yes
+		Extensions->Calculator->Yes
+		Extensions->Chromium->Yes
+		Extensions->Files->Yes
+		Extensions->Files->Audio->Yes
+		Extensions->Files->Video->Yes
+		Extensions->Files->Images->Yes
+		Extensions->Firefox bookmarks->Yes
+		Extensions->Firefox bookmarks->Fuzzy Search->Yes
+		Extensions->Firefox bookmarks->Open with firefox default->Yes
+		Extensions->System->Yes
+		Extensions->Terminal->Yes
+		Extensions->WebSearch->Yes
+
+	更换用户登录界面和壁纸
+
+		运行
+
+		git clone https://github.com/PRATAP-KUMAR/focalgdm3.git
+		sudo ./focalgdm3/focalgdm3 --set
+		Enter
+		<path-to-"mcOS-BS1.png"-file>
+
+
+
+
+
+=================================Ubuntu21.10安装chrome=======================================
+
+# 方法1.命令行安装
+
+    终端输入
+    	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    加入源 
+    	sudo gedit /etc/apt/sources.list.d/google.list
+    粘贴
+    	deb http://dl.google.com/linux/chrome/deb/ stable main
+    更新
+    	sudo apt-get update
+    安装
+    	sudo apt-get install google-chrome-stable
+    版本的更换 
+    	sudo apt-get install google-chrome-stable
+
+
+# 方法2.下载到本地安装
+
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+     
+    sudo apt install ./google-chrome-stable_current_amd64.deb
+     
+    软件默认安装位置
+    /opt/google/chrome
+
+    升级 Google Chrome
+
+        在安装过程中，官方 Google 软件源被添加到你的系统
+
+			cat /etc/apt/sources.list.d/google-chrome.list
+
+
+
+==============================Ubuntu20.04 安装 WPS 2019============================
+一、卸载原生liboffice
+
+	sudo apt-get remove libreoffice-common
+
+	如果以后还要安装可以执行
+
+	sudo apt-get install libreoffice
+
+二、安装wps
+
+	下载wps deb包(https://www.wps.cn/product/wpslinux/)
+
+	下载后双击打开ubuntu软件来安装。
+
+	或命令安装
+
+	    cd Download
+	    sudo dpkg -i wps-office_10.1.0.6757_amd64.deb
+
+     下载后解压字体包，进入文件夹，将字体文件拷贝到系统目录下
+
+		sudo cp *.ttf *.TTF /usr/share/fonts
+
+		生成字体的索引信息
+
+		sudo mkfontscale
+		sudo mkfontdir
+		更新字体缓存
+			sudo fc-cache
+
+
+=========================Ubuntu安装谷歌拼音输入法==========================
+Linux下常用的中文输入法框架有iBus和fcitx。其中搜狗输入法和谷歌拼音输入法用的就是fcitx的框架。下面将介绍谷歌拼音输入法的安装方法。
+
+    安装fcitx
+
+		sudo apt-get install fcitx
+
+    安装谷歌拼音输入法
+
+		sudo apt-get install fcitx-googlepinyin
+
+    启用fcitx
+
+		进入 系统设置-语言支持 或 System Settings - Language Support
+
+
+
+
+=============================deepin-wine===================================
+
+1.添加仓库。
+
+	wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+
+2.添加仓库后，就能通过sudo apt isntall进行安装了。
+3.这里给出qq和微信的安装包。
+应用	                    包名
+qq	                    com.qq.im.deepin
+微信	                    com.qq.weixin.deepin
+
+
+4.安装微信可以使用以下命令:
+	sudo apt install com.qq.weixin.deepin
+
+  
+  ### 官网上列出了一些常用的安装包
+
+	    首次使用需要添加仓库： wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+	    而后使用： apt install ... 安装对应软件包
+	    应用图标需要注销重登录后才会出现
+	  		https://deepin-wine.i-m.dev/
+
+
+####   安装必要工具及deepin-wine的依赖
+
+			sudo apt install wget g++
+			安装deepin-wine
+
+			mkdir /tmp/deepintemp
+	cd /tmp/deepintemp
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-wine_2.18-22~rc0_all.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-wine32_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-wine32-preloader_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-wine32-tools_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-wine-binfmt_2.18-22~rc0_all.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-fonts-wine_2.18-22~rc0_all.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-libwine_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-libwine-dev_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine/deepin-libwine-dbg_2.18-22~rc0_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine-helper/deepin-wine-helper_1.2deepin8_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine-plugin/deepin-wine-plugin_1.0deepin2_amd64.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine-plugin-virtual/deepin-wine-plugin-virtual_1.0deepin3_all.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/d/deepin-wine-uninstaller/deepin-wine-uninstaller_0.1deepin2_i386.deb
+	wget http://packages.deepin.com/deepin/pool/non-free/u/udis86/udis86_1.72-2_i386.deb
+	wget http://packages.deepin.com/deepin/pool/main/libj/libjpeg-turbo/libjpeg62-turbo_1.5.1-2_amd64.deb
+	wget http://packages.deepin.com/deepin/pool/main/libj/libjpeg-turbo/libjpeg62-turbo_1.5.1-2_i386.deb
+
+	# 加32位支持
+		sudo dpkg --add-architecture i386
+		sudo apt update
+	# 开始安装
+		sudo dpkg -i *.deb
+	# 安装依赖
+		sudo apt install -fy
+
+	# 没报错的话，deepin-wine环境已经安装好了
+		rm -rfv /tmp/deepintemp
+
+	# 安装微信
+		wget http://packages.deepin.com/deepin/pool/non-free/d/deepin.com.wechat/deepin.com.wechat_2.6.8.65deepin0_i386.deb
+		sudo dpkg -i deepin.com.wechat_2.6.8.65deepin0_i386.deb
+
+		解决微信无法输入中文的问题：
+
+			sudo vim /opt/deepinwine/tools/run.sh
+
+			将 WINE_CMD 那一行修改为：
+
+				WINE_CMD="LC_ALL=zh_CN.UTF-8 deepin-wine"
+
+		并在该行下方添加如下内容：
+
+			export GTK_IM_MODULE="fcitx"
+			export QT_IM_MODULE="fcitx" 
+			export XMODIFIERS="@im=fcitx"
+
+
+	# 安装QQ
+
+		wget http://packages.deepin.com/deepin/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_9.1.8deepin0_i386.deb
+		sudo dpkg -i deepin.com.qq.im_9.1.8deepin0_i386.deb
+
+
+
+
+
+
+

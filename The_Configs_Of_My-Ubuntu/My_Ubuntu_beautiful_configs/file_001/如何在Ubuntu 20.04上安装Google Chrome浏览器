@@ -1,0 +1,25 @@
+ 如何在Ubuntu 20.04上安装Google Chrome浏览器
+
+Chrome适用于所有主要操作系统和硬件平台，可让您在所有设备上同步书签，历史记录和密码。
+在Ubuntu上安装Google Chrome
+
+Chrome不是开放源代码浏览器，它也不包含在标准Ubuntu存储库中。在Ubuntu上安装Chrome浏览器是一个非常简单的过程。我们将从官方网站下载安装文件，然后从命令行进行安装。
+
+执行以下步骤在Ubuntu系统上安装Chrome浏览器：
+1.下载谷歌浏览器
+
+通过使用Ctrl+Alt+T键盘快捷键或单击终端图标来打开终端
+
+使用wget下载最新的Google Chrome .deb软件包：
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+2.安装Google Chrome
+
+在Ubuntu上安装软件包需要管理权限。以具有sudo特权的用户身份运行以下命令，以.deb在系统上安装Chrome 软件包：
+
+sudo apt install ./google-chrome-stable_current_amd64.deb
+
+出现提示时，输入您的用户密码，安装将开始。
+
+至此，您已经在Ubuntu系统上安装了Chrome。
